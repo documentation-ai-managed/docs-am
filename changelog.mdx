@@ -1,0 +1,139 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to am with detailed version history.
+---
+
+## Recent Updates
+
+Stay informed about all changes to am. You receive new features, performance improvements, and critical bug fixes through automatic updates. Review the details below for each release.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for documentation pages, allowing multiple users to edit simultaneously.
+- Introduced customizable themes with support for your brand color `{`#3B82F6`}`.
+- New API endpoints for programmatic document management at `https://api.example.com/v1/docs`.
+
+## Improvements
+
+- Enhanced search functionality with fuzzy matching and syntax highlighting.
+- Optimized page load times by `{>30%}` through lazy loading.
+
+## Bug Fixes
+
+- Fixed markdown parsing issues with nested lists and tables.
+- Resolved authentication token refresh errors during long sessions.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Integrated version history with diff viewer for tracking changes.
+- Added export options to PDF, HTML, and Markdown formats.
+
+## Bug Fixes
+
+- Corrected image upload failures in certain browsers.
+- Patched cross-site scripting vulnerabilities in user-generated content.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["breaking", "feature"]}>
+
+## Breaking Changes
+
+- Updated API authentication to use `{`Bearer YOUR_TOKEN`}` headers instead of query params.
+
+## New Features
+
+- Core documentation workspace with page organization and search.
+- Basic authentication via `https://auth.example.com/oauth/token`.
+- Initial sidebar navigation and frontmatter support.
+
+</Update>
+
+## Upgrade Process
+
+Follow these steps to ensure smooth upgrades when new versions release.
+
+<Steps>
+  <Step title="Backup Data" icon="database">
+    Export your documentation space:
+    
+````bash
+am export --space my-project --format json > backup.json
+````
+  </Step>
+  <Step title="Update CLI" icon="download">
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm install am@latest
+````
+      </Tab>
+      <Tab title="yarn" icon="package">
+````bash
+yarn global add am@latest
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Verify" icon="check-circle">
+    Run `am doctor` to check compatibility.
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+  Always test upgrades in a staging environment first, especially with breaking changes like API header updates.
+</Callout>
+
+## Upcoming Roadmap
+
+Explore what's next for am.
+
+<Columns cols={3}>
+  <Card title="Q4 2024" icon="calendar" href="/roadmap#q4">
+    AI-powered content suggestions and auto-formatting.
+  </Card>
+  <Card title="Q1 2025" icon="zap" href="/roadmap#q1">
+    Full webhook support for integrations.
+  </Card>
+  <Card title="Community Features" icon="users" href="/roadmap#community">
+    Public page sharing and comments.
+  </Card>
+</Columns>
+
+## Breaking Changes Summary
+
+| Version | Change | Migration Steps |
+|---------|--------|-----------------|
+| v1.0.0 | API auth moved to headers | Update requests: `Authorization: Bearer {YOUR_TOKEN}` |
+| v1.2.0 | Removed legacy export format | Use new `{`--format json`}` flag |
+
+<Expandable title="Detailed Migration Guide" default-open="false">
+
+For v1.0.0, update your API calls:
+
+<CodeGroup tabs="JavaScript,cURL">
+````javascript
+// Old
+fetch('https://api.example.com/docs', { params: { token: 'old-token' } })
+
+// New
+fetch('https://api.example.com/docs', {
+  headers: { Authorization: `Bearer ${YOUR_TOKEN}` }
+})
+````
+````bash
+# Old
+curl "https://api.example.com/docs?token=old-token"
+
+# New
+curl -H "Authorization: Bearer YOUR_TOKEN" https://api.example.com/docs
+````
+</CodeGroup>
+
+</Expandable>

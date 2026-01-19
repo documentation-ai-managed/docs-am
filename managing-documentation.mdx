@@ -1,0 +1,132 @@
+---
+title: Managing Documentation
+description: Step-by-step instructions on organizing, editing, and maintaining your project docs in am.
+---
+
+## Adding and Editing Pages
+
+Use am's intuitive editor to create and update your documentation. Start by navigating to the workspace dashboard and selecting the `New Page` button.
+
+<Steps>
+  <Step title="Create a New Page" icon="plus">
+    Click `New Page` in the sidebar.
+
+    Enter a title like `Getting Started`.
+
+    Choose a parent folder for organization.
+  </Step>
+
+  <Step title="Edit Content" icon="edit-3">
+    Use the visual editor for markdown and MDX.
+
+    Add components like `<Callout>` for tips.
+
+````markdown
+```javascript
+console.log("Your docs are live!");
+```
+````
+
+  </Step>
+
+  <Step title="Save and Preview" icon="eye">
+    Hit `Save` to publish changes instantly.
+
+    Use the preview pane to check rendering.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Changes publish automatically. Use version history to revert if needed.
+</Callout>
+
+## Search and Navigation Tools
+
+am provides powerful tools to keep your docs accessible. Switch between search modes based on your needs.
+
+<Tabs>
+  <Tab title="Full-Text Search" icon="search">
+    Type keywords to find pages instantly.
+
+    Filters include tags and dates.
+
+    Pro tip: Use quotes for exact matches like `"API integration"`.
+  </Tab>
+
+  <Tab title="Tree Navigation" icon="layout">
+    Browse hierarchical folders.
+
+    Collapse/expand sections for focus.
+
+    Drag pages to reorganize structure.
+  </Tab>
+
+  <Tab title="Recent Edits" icon="clock">
+    View latest changes across the workspace.
+
+    Filter by user or page.
+  </Tab>
+</Tabs>
+
+## Exporting and Publishing Options
+
+Export your docs for backups or external hosting. am supports multiple formats.
+
+<Columns cols={2}>
+  <Card title="Static Export" icon="download" href="#">
+    Generate HTML or Markdown bundles.
+
+    Ideal for GitHub Pages deployment.
+  </Card>
+
+  <Card title="API Publishing" icon="globe" href="#">
+    Push updates via webhook to your site.
+
+    Supports custom domains.
+  </Card>
+</Columns>
+
+For programmatic exports, use the CLI:
+
+<CodeGroup tabs="CLI,Node.js">
+````bash
+am export --format=markdown --output=./docs
+````
+
+````javascript
+const am = require('am-sdk');
+await am.export({ format: 'html', path: './build' });
+````
+</CodeGroup>
+
+## Best Practices for Maintenance
+
+Follow these guidelines to keep your docs scalable and user-friendly.
+
+<ExpandableGroup>
+  <Expandable title="Organize with Folders" default-open="true">
+    Limit top-level pages to 7-10.
+
+    Use descriptive names like `Authentication` instead of `Auth`.
+
+    Tag pages for cross-referencing.
+  </Expandable>
+
+  <Expandable title="Version Control Integration">
+    Connect your Git repo for pull requests.
+
+    Review changes before merging.
+
+    Automate builds with CI/CD.
+  </Expandable>
+</ExpandableGroup>
+
+| Practice | Benefit |
+|----------|---------|
+| Weekly reviews | Catch outdated info |
+| User feedback links | Improve relevance |
+| Component consistency | Better readability |
+
+<Callout kind="tip">
+  Audit links quarterly using am's built-in checker. Link to [Quickstart](/quickstart) for setup.
+</Callout>
